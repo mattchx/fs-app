@@ -1,13 +1,19 @@
 const express = require('express')
 const router = express.Router()
+const User = require('../model/User')
 
-router.get('/', function(req, res) {
-    res.send("Rendering file")
-})
-
-
-router.post('/signup', (req, res) => {
-    res.send('Signup')
+router.post('/signup', async (req, res) => {
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.email
+    })
+    try{
+        const savedUser = await user.save()
+        res.status(200).send(savedUser)
+    } catch(err){
+        res.status(400).send(err)
+    }
 })
 
 module.exports = router
