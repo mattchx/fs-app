@@ -17,9 +17,9 @@ function Signup() {
             <br />
             <Input placeholder="Enter your password" />
             <br />
-            <Button>Login</Button>
+            <Button>Sign me up</Button>
             <p>
-              Click here to <Link to="/signup">Sign up</Link>
+              Click here to <Link to="/login">Log in</Link>
             </p>
           </LoginBoxInner>
         </LoginBoxOuter>
@@ -51,7 +51,7 @@ const Button = styled.button`
 `;
 
 const LoginBoxInner = styled.div`
-  padding: 75px 35px;
+  padding: 45px 35px;
 `;
 
 const LoginBoxOuter = styled.div`

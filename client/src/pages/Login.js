@@ -15,8 +15,8 @@ function Login() {
           <br/>
           <Input placeholder="Enter your password" />
           <br/>
-          <Button>Login</Button>
-          <p>Click here to <Link>Sign up</Link></p>
+          <Button>Log me in</Button>
+          <p>Click here to <Link to="/signup">Sign up</Link></p>
           </LoginBoxInner>
         </LoginBoxOuter>
       </Container>
