@@ -1,22 +1,26 @@
 import React from 'react';
 import Header from '../components/Header';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
-function Login() {
+function Signup() {
   return (
     <div>
       <Header />
       <Container>
         <LoginBoxOuter>
-        <LoginBoxInner>
+          <LoginBoxInner>
             <BoxTitle>FS app</BoxTitle>
-          <Input placeholder="Enter your email" />
-          <br/>
-          <Input placeholder="Enter your password" />
-          <br/>
-          <Button>Login</Button>
-          <p>Click here to <Link>Sign up</Link></p>
+            <Input placeholder="Enter your name" />
+            <br />
+            <Input placeholder="Enter your email" />
+            <br />
+            <Input placeholder="Enter your password" />
+            <br />
+            <Button>Login</Button>
+            <p>
+              Click here to <Link to="/signup">Sign up</Link>
+            </p>
           </LoginBoxInner>
         </LoginBoxOuter>
       </Container>
@@ -24,11 +28,11 @@ function Login() {
   );
 }
 
-export default Login;
-
+export default Signup;
 
 const BoxTitle = styled.h1`
-text-align: center;`
+  text-align: center;
+`;
 
 const Button = styled.button`
   padding: 5px 10px;
@@ -47,10 +51,12 @@ const Button = styled.button`
 `;
 
 const LoginBoxInner = styled.div`
-  padding: 75px 35px`
+  padding: 75px 35px;
+`;
 
 const LoginBoxOuter = styled.div`
-  box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;
+  box-shadow: 0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0px 6px 30px 5px rgba(0, 0, 0, 0.12), 0px 8px 10px -7px rgba(0, 0, 0, 0.2);
   width: 400px;
   height: 500px;
   border-radius: 3px;
@@ -72,4 +78,3 @@ const Container = styled.div`
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 `;
-
