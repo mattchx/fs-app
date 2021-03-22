@@ -1,22 +1,23 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from './actions';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Counter from './pages/Counter';
 
 function App() {
-  const counter = useSelector((state) => state.counter);
-  const loggedIn = useSelector((state) => state.loggedIn);
-  const dispatch = useDispatch();
   return (
-    <div>
-      <div>
-        <div>Counter {counter}</div>
-        <button onClick={() => dispatch(increment())}>+</button>
-        <button onClick={() => dispatch(decrement())}>-</button>
-      </div>
-      {loggedIn && <div>Valuable Information</div>}
-      <button onClick={() => dispatch({ type: 'LOG_IN' })}>
-        Log me {loggedIn ? 'out' : 'in'}{' '}
-      </button>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/counter">
+          <Counter />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
