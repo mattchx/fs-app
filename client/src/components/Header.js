@@ -19,7 +19,8 @@ function Header() {
     return (
         <div style={s.container}>
           <Link style={s.link} to="/">Home</Link>  
-          <Link style={s.link} to="/Login">Login</Link>  
+          <Link style={s.link} to="/login">Login</Link> 
+          <Link style={s.link} to="/signup">Signup</Link>   
           <Link style={s.link} to="/Counter">Counter</Link>  
         </div>
     )
