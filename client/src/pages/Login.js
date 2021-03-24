@@ -1,9 +1,24 @@
-import React from 'react';
 import Header from '../components/Header';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 function Login() {
+    const { register, handleSubmit, watch, errors } = useForm();
+
+  const onSubmit = (data) => {
+    const postData = async () => {
+      try {
+        const response = await axios.post('/api/user/login', data);
+        console.log(response.data);
+      } catch (err){
+        console.log(err.response.data.error);
+        
+      }
+    };
+    postData();
+  };
   return (
     <div>
       <Header />
@@ -11,11 +26,22 @@ function Login() {
         <LoginBoxOuter>
         <LoginBoxInner>
             <BoxTitle>FS app</BoxTitle>
-          <Input placeholder="Enter your email" />
-          <br/>
-          <Input placeholder="Enter your password" />
-          <br/>
-          <Button>Log me in</Button>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                ref={register({ required: true })}
+                name="email"
+                placeholder="Enter your email"
+              />
+              {errors.email && <span>This is required</span>}
+              <Input
+                ref={register({ required: true })}
+                name="password"
+                placeholder="Enter your password"
+              />
+              {errors.password && <span>This is required</span>}
+              <br />
+              <Button type="submit">Sign me up</Button>
+              </form>
           <p>Click here to <Link to="/signup">Sign up</Link></p>
           </LoginBoxInner>
         </LoginBoxOuter>

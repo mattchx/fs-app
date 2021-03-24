@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 function Signup() {
   const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = async (data) => {
-    console.log(data);
-    const response = await fetch('/api/user/signup', { method: 'POST', body:data });
-    console.log(response);
+
+  const onSubmit = (data) => {
+    const postData = async () => {
+      try {
+        const response = await axios.post('/api/user/signup', data);
+        console.log(response.data);
+      } catch (err){
+        console.log(err.response.data.error);
+        
+      }
+    };
+    postData();
   };
 
   return (
@@ -40,10 +48,11 @@ function Signup() {
               {errors.password && <span>This is required</span>}
               <br />
               <Button type="submit">Sign me up</Button>
+              </form>
               <p>
                 Click here to <Link to="/login">Log in</Link>
               </p>
-            </form>
+            
           </LoginBoxInner>
         </LoginBoxOuter>
       </Container>

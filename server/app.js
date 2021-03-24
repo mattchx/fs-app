@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const PORT = process.env.PORT || 3001 
 // Import Routes
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts')
-
+// const cors = require('cors')
 
 dotenv.config();
 
@@ -18,9 +19,16 @@ mongoose.connect(
 
 // Middleware
 app.use(express.json());
+//app.use(cors())
 
 // Route Middlewares
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute)
 
-app.listen(3000, () => console.log('Server is live @ 3000'));
+// app.get('/', (req, res) => {
+//     console.log("We got it!")
+//     res.send("We got it!")
+//     next()
+// })
+
+app.listen(PORT, () => console.log(`Server is live @ ${PORT}`));
