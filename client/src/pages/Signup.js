@@ -12,9 +12,8 @@ function Signup() {
       try {
         const response = await axios.post('/api/user/signup', data);
         console.log(response.data);
-      } catch (err){
+      } catch (err) {
         console.log(err.response.data.error);
-        
       }
     };
     postData();
@@ -48,11 +47,10 @@ function Signup() {
               {errors.password && <span>This is required</span>}
               <br />
               <Button type="submit">Sign me up</Button>
-              </form>
-              <p>
-                Click here to <Link to="/login">Log in</Link>
-              </p>
-            
+            </form>
+            <p>
+              Click here to <Link to="/login">Log in</Link>
+            </p>
           </LoginBoxInner>
         </LoginBoxOuter>
       </Container>
