@@ -8,14 +8,18 @@ import {
 
 const initialState = {
   token: localStorage.getItem('token'),
-  isAuthenticated: null,
+  isAuth: null,
   user: null,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOG_IN':
-      return !state;
+    case LOGIN_SUCCESS:
+    case REGISTER_SUCCESS:
+      return { token: localStorage.setItem('token', action.payload.token), isAuth: true, user: action.payload.id };
+    case LOGIN_FAIL:
+    case REGISTER_FAIL:
+      return { token: null, isAuth: false, user: null };
     default:
       return state;
   }
