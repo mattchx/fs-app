@@ -1,12 +1,24 @@
-const counterReducer = (state = 0, action) => {
-    switch (action.type) {
-      case 'INCREMENT':
-        return state + 1;
-      case 'DECREMENT':
-        return state - 1;
-      default:
-        return state;
-    }
-  };
+//import {addPost, deletePost, getPosts } from '../actions/posts'
+import { ADD_POST, DELETE_POST, GET_POSTS } from '../actions/types';
 
-  export default counterReducer
+const initialState = {
+  userId: null,
+  posts: [{ postId: 0, text: 'Welcome!' }],
+};
+
+const postsReducer = (state, action) => {
+  let postId = 1;
+  switch (action.type) {
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [...state.posts, { postId: postId++, text: action.payload }],
+      };
+    case '':
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+export default postsReducer;
